@@ -2,22 +2,28 @@ let data = [];
 let newIndex = -1;
 
 function addItem() {
-    let firstName = document.getElementById("exampleInputName1").value;
-    let lastName = document.getElementById("exampleInputName2").value;
-    let contactNumber = document.getElementById("exampleInputNumber").value;
-    let emailId = document.getElementById("exampleInputEmail").value;
-    if (newIndex<0) {
-        data.push({firstName, lastName, contactNumber, emailId});
+    let obj = {
+        firstName: document.getElementById("exampleInputName1").value,
+        lastName: document.getElementById("exampleInputName2").value,
+        contactNumber: document.getElementById("exampleInputNumber").value,
+        emailId: document.getElementById("exampleInputEmail").value
+    }
+
+    if (newIndex >= 0) {
+        data[newIndex] = obj;
     }
     else{
-        data[newIndex] = firstName
-        data[newIndex] = lastName
-        data[newIndex] = contactNumber
-        data[newIndex] = emailId
+        data.push(obj);
     }
-    console.log(data);
+   
     display()
+    
+    document.getElementById("exampleInputName1").value = " ";
+    document.getElementById("exampleInputName2").value = " ";
+    document.getElementById("exampleInputNumber").value = " ";
+    document.getElementById("exampleInputEmail").value = " ";
 }
+
 
 function display(d) {
     let displayData = data.map(function(value, index){
@@ -51,10 +57,12 @@ function deleteItem(index) {
 }
 
 function editItem(index) {
-    document.getElementById("exampleInputName1").value = data[index];
-    document.getElementById("exampleInputName2").value = data[index];
-    document.getElementById("exampleInputNumber").value = data[index];
-    document.getElementById("exampleInputEmail").value = data[index];
+    let obj = data[index];
+
+    document.getElementById("exampleInputName1").value = obj.firstName;
+    document.getElementById("exampleInputName2").value = obj.lastName;
+    document.getElementById("exampleInputNumber").value = obj.contactNumber;
+    document.getElementById("exampleInputEmail").value = obj.emailId;
 
     newIndex = index;
 }
