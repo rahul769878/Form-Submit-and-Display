@@ -17,7 +17,7 @@ function addItem() {
     }
    
     display()
-    
+
     document.getElementById("exampleInputName1").value = " ";
     document.getElementById("exampleInputName2").value = " ";
     document.getElementById("exampleInputNumber").value = " ";
@@ -66,3 +66,7 @@ function editItem(index) {
 
     newIndex = index;
 }
+
+
+
+
